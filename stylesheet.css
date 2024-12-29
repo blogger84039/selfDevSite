@@ -5,6 +5,10 @@ header {
     background-color: #6495ed;
 }
 
+#langChange {
+    margin-left: auto;
+}
+
 #creditList {
     list-style: none;
 }
