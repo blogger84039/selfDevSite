@@ -2,6 +2,7 @@ header {
     display: flex;
     width: auto;
     height: 100px;
+    padding: 10px;
     background-color: #6495ed;
 }
 
