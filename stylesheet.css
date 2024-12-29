@@ -4,6 +4,10 @@ header {
     background-color: #6495ed;
 }
 
+#word {
+    border: 2px solid black;
+}
+
 #creditList {
     list-style: none;
 }
