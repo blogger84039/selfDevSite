@@ -9,6 +9,10 @@ header {
     border: 2px solid black;
 }
 
+#inputForm {
+    width: 100%;
+}
+
 #creditList {
     list-style: none;
 }
