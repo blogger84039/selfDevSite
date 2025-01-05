@@ -29,4 +29,6 @@ const word = [
 
 let wordBox = document.getElementById('wordBox');
 
-let random = Math.floor(Math.random() * 7);
+const randomFunc = () => {
+    let random = Math.floor(Math.random() * 7);
+}
