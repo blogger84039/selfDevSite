@@ -26,3 +26,5 @@ const word = [
     person: 'オリジナル'
     }
 ];
+
+export { word };
