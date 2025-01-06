@@ -30,7 +30,7 @@ const word = [
 let wordBox = document.getElementById('wordBox');
 
 const randomFunc = () => {
-    let random = Math.floor(Math.random() * 7);
+    random = Math.floor(Math.random() * 7);
 }
 
 randomFunc();
