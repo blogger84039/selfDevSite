@@ -1,9 +1,9 @@
 'use strict';
 
-const word = [
+const wordList = [
     {
     word: '苦しいから逃げるのではない。逃げるから苦しくなるのだ。',
-    peason: 'ウィリアム・ジェームズ（心理学者）'
+    person: 'ウィリアム・ジェームズ（心理学者）'
     },
     {
     word: 'あなたは挑戦しては失敗する。 挑戦しては失敗する。挑戦しては失敗する、を繰り返す。しかし本当の失敗は、あなたが 挑戦することを辞めることだ。',
@@ -28,6 +28,8 @@ const word = [
 ];
 
 const wordBox = document.getElementById('wordBox');
+const word = document.getElementById('word');
+const person = document.getElementById('person');
 
 let random = 0;
 let Done = [];
@@ -38,3 +40,6 @@ const randomFunc = () => {
 }
 
 randomFunc();
+
+word.textContent = wordList[random].word;
+person.textContent += wordList[random].person;

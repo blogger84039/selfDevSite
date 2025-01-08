@@ -9,6 +9,10 @@ header {
     border: 2px solid black;
 }
 
+#title, #word, #person {
+    text-align: center;
+}
+
 #inputForm {
     width: 100%;
 }
