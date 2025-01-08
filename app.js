@@ -56,4 +56,12 @@ document.addEventListener('DOMContentLoaded', () => {
             input.disabled = false;
         }, 5000);
     }
+    input.addEventListener('keydown', enter);
 })
+
+const enter = (event) => {
+    if (event.key === 'Enter') {
+        console.log('Enter was clicked!');
+        input.blur();
+    }
+}
