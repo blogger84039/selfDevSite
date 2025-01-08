@@ -27,7 +27,7 @@ const word = [
     }
 ];
 
-let wordBox = document.getElementById('wordBox');
+const wordBox = document.getElementById('wordBox');
 
 let random = 0;
 
