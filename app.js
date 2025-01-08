@@ -34,6 +34,7 @@ let Done = [];
 
 const randomFunc = () => {
     random = Math.floor(Math.random() * 7);
+    Done.push(random);
 }
 
 randomFunc();
