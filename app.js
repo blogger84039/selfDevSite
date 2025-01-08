@@ -65,3 +65,9 @@ const enter = (event) => {
         input.blur();
     }
 }
+
+input.addEventListener('change', () => {
+    if (input.value === wordList[random].word) {
+        button.disabled = false;
+    }
+})
