@@ -28,6 +28,10 @@ header {
     border-radius: 5px;
 }
 
+#button:disabled {
+    opacity: 0.5;
+}
+
 #creditList {
     list-style: none;
 }
