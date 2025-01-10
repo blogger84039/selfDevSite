@@ -71,3 +71,8 @@ input.addEventListener('change', () => {
         button.disabled = false;
     }
 })
+
+button.addEventListener('click', () => {
+    word.textContent = wordList[random].word;
+    person.textContent = wordList[random].person;
+})
