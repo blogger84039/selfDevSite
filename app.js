@@ -33,7 +33,6 @@ const person = document.getElementById('person');
 const input = document.getElementById('input');
 const button = document.getElementById('button');
 
-let count = 0;
 let random = 0;
 let Done = [];
 
@@ -76,5 +75,4 @@ input.addEventListener('change', () => {
 button.addEventListener('click', () => {
     word.textContent = wordList[random].word;
     person.textContent = wordList[random].person;
-    count++;
 })
