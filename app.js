@@ -74,6 +74,40 @@ person.textContent += wordList[random].person;
 document.addEventListener('DOMContentLoaded', () => {
     setInputTimer();  // 初回表示時のタイマー設定
     input.addEventListener('keydown', enter);
+
+    wordArea.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    });
+
+    document.addEventListener('keydown', function(e) {
+        // Ctrl/Cmd + C
+        if ((e.ctrlKey || e.metaKey) && e.key === 'c') {
+            if (e.target.id !== 'input') {  // 入力欄では通常通り使用可能
+                e.preventDefault();
+            }
+        }
+        
+        // Ctrl/Cmd + A
+        if ((e.ctrlKey || e.metaKey) && e.key === 'a') {
+            if (e.target.id !== 'input') {  // 入力欄では通常通り使用可能
+                e.preventDefault();
+            }
+        }
+    });
+
+    // モバイルデバイスでの長押し選択を防止
+    wordArea.addEventListener('touchstart', function(e) {
+        if (e.target.id !== 'input') {
+            e.preventDefault();
+        }
+    });
+
+    // クリップボードへのコピーを監視
+    document.addEventListener('copy', function(e) {
+        if (e.target.id !== 'input') {
+            e.preventDefault();
+        }
+    });
 });
 
 const enter = (event) => {
