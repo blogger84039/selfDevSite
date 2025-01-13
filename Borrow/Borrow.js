@@ -147,20 +147,27 @@ const borrowTranslations = {
 };
 
 // 言語切り替え機能の実装
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const langSelect = document.getElementById('selectLangBox');
 
-    // 言語切り替えイベントの設定
-    langSelect.addEventListener('change', function(e) {
+    // ブラウザの言語設定を取得して初期言語を決定
+    const detectUserLanguage = () => {
+        const userLang = navigator.language || navigator.userLanguage;
+        return userLang.toLowerCase().startsWith('ja') ? 'ja' : 'en';
+    };
+
+    // 初期言語の設定
+    const initialLang = detectUserLanguage();
+    langSelect.value = initialLang;
+    updatePageContent(initialLang);
+    updateMetadata(initialLang);
+
+    // 言語切り替えイベントリスナー
+    langSelect.addEventListener('change', function (e) {
         const selectedLang = e.target.value;
         updatePageContent(selectedLang);
         updateMetadata(selectedLang);
     });
-
-    // 初期言語の設定
-    const initialLang = 'ja';
-    updatePageContent(initialLang);
-    updateMetadata(initialLang);
 });
 
 // ページコンテンツの更新
@@ -181,7 +188,7 @@ function updatePageContent(lang) {
 
     // Special Thanks セクションの更新
     document.getElementById('specialThanks').textContent = t.sections.specialThanks.title;
-    
+
     // description の更新（表示/非表示の切り替え）
     const description = document.getElementById('discription');
     if (t.sections.specialThanks.description) {
@@ -209,7 +216,7 @@ function updatePageContent(lang) {
 function updateHonorifics(honorific) {
     // すべてのリンクを取得
     const links = document.querySelectorAll('a');
-    
+
     links.forEach(link => {
         const parentElement = link.parentElement;
         if (parentElement && parentElement.tagName === 'P') {
