@@ -138,24 +138,24 @@ function updateContent(lang) {
 function updateMetadata(lang) {
     // html lang属性の更新
     document.documentElement.lang = metaTranslations[lang].lang;
-    
+
     // titleタグの更新
     document.title = metaTranslations[lang].title;
-    
+
     // meta description の更新
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
         metaDescription.setAttribute('content', metaTranslations[lang].description);
     }
-    
+
     // OGPメタデータの更新
     const ogTitleMeta = document.querySelector('meta[property="og:title"]');
     const ogDescriptionMeta = document.querySelector('meta[property="og:description"]');
-    
+
     if (ogTitleMeta) {
         ogTitleMeta.setAttribute('content', metaTranslations[lang].ogTitle);
     }
-    
+
     if (ogDescriptionMeta) {
         ogDescriptionMeta.setAttribute('content', metaTranslations[lang].ogDescription);
     }
@@ -282,13 +282,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // デフォルト言語の設定
     const initialLang = langParam || 'ja';
-    
+
     // 言語セレクターの初期値を設定
     document.getElementById('lang').value = initialLang;
-    
+
     // コンテンツとメタデータの初期化
     updateContent(initialLang);
     updateMetadata(initialLang);
+
+    // ブラウザの言語設定に基づいて初期言語を設定
+    const detectUserLanguage = () => {
+        const userLang = navigator.language || navigator.userLanguage;
+        // 日本語系の場合はjaを、それ以外はenを設定
+        return userLang.startsWith('ja') ? 'ja' : 'en';
+    };
+
+    // 初期言語を設定
+    let selectedLang = detectUserLanguage();
+
+    // セレクトボックスの初期値を設定
+    document.getElementById('lang').value = selectedLang;
+
+    // 初期コンテンツの更新
+    updateContent(selectedLang);
+    updateMetadata(selectedLang);
 });
 
 const enter = (event) => {
