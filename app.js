@@ -75,13 +75,42 @@ const translations = {
     }
 };
 
+// メタデータ用の翻訳データを追加
+const metaTranslations = {
+    ja: {
+        lang: "ja",
+        title: "自己啓発サイト",
+        description: "名言を「見て、入力する」することで自己啓発をすることができるサイト",
+        ogTitle: "自己啓発サイト",
+        ogDescription: "名言を「見て、入力する」することで自己啓発をすることができるサイト"
+    },
+    en: {
+        lang: "en",
+        title: "Self-Development Site",
+        description: "A site where you can develop yourself by seeing and typing inspirational quotes",
+        ogTitle: "Self-Development Site",
+        ogDescription: "A site where you can develop yourself by seeing and typing inspirational quotes"
+    }
+};
+
 let selectedLang = 'ja';
 
 // 言語切り替え機能の実装
 document.getElementById('lang').addEventListener('change', function (e) {
     selectedLang = e.target.value;
+
+    // 名言エリアの更新
     updateContent(selectedLang);
+
+    // メタデータの更新
+    updateMetadata(selectedLang);
 });
+
+// translationsを言語に応じて切り替える
+function gettranslations(lang) {
+    return translations[lang].quotes;
+}
+
 
 function updateContent(lang) {
     // タイトルの更新
@@ -106,9 +135,30 @@ function updateContent(lang) {
     }
 }
 
-// translationsを言語に応じて切り替える
-function gettranslations(lang) {
-    return translations[lang].quotes;
+function updateMetadata(lang) {
+    // html lang属性の更新
+    document.documentElement.lang = metaTranslations[lang].lang;
+    
+    // titleタグの更新
+    document.title = metaTranslations[lang].title;
+    
+    // meta description の更新
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+        metaDescription.setAttribute('content', metaTranslations[lang].description);
+    }
+    
+    // OGPメタデータの更新
+    const ogTitleMeta = document.querySelector('meta[property="og:title"]');
+    const ogDescriptionMeta = document.querySelector('meta[property="og:description"]');
+    
+    if (ogTitleMeta) {
+        ogTitleMeta.setAttribute('content', metaTranslations[lang].ogTitle);
+    }
+    
+    if (ogDescriptionMeta) {
+        ogDescriptionMeta.setAttribute('content', metaTranslations[lang].ogDescription);
+    }
 }
 
 const wordBox = document.getElementById('wordBox');
@@ -225,6 +275,20 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
         }
     });
+
+    // URLからの言語パラメータ取得
+    const urlParams = new URLSearchParams(window.location.search);
+    const langParam = urlParams.get('lang');
+
+    // デフォルト言語の設定
+    const initialLang = langParam || 'ja';
+    
+    // 言語セレクターの初期値を設定
+    document.getElementById('lang').value = initialLang;
+    
+    // コンテンツとメタデータの初期化
+    updateContent(initialLang);
+    updateMetadata(initialLang);
 });
 
 const enter = (event) => {
