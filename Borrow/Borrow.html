@@ -10,9 +10,9 @@
     integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
   <meta name="description" content="">
 
-  <meta property="og:title" content="">
-  <meta property="og:type" content="">
-  <meta property="og:url" content="">
+  <meta property="og:title" content="お借りしたもの一覧">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://blogger84039.github.io/SelfDevSite/Borrow/Borrow.html">
   <meta property="og:image" content="">
 
   <link rel="icon" href="/favicon.ico" sizes="any">
@@ -25,8 +25,16 @@
 
 <body>
 
-  <header class="mb-2 d-flex justify-content-center align-items-center">
+  <header class="p-3 mb-2 d-flex justify-content-center align-items-center">
     <h1 class="mb-0">お借りしたもの</h1>
+    <label for="selectLang" class="ms-auto">
+      <form action="./Borrow.js" id="selectLang">lang：
+        <select name="selectLangBox" id="selectLangBox">
+          <option value="ja">ja</option>
+          <option value="en">en</option>
+        </select>
+      </form>
+    </label>
   </header>
 
   <main>
@@ -36,6 +44,14 @@
       </p>
       <section>
         <table>
+          <p id="specialThanks">スペシャルサンクス</p>
+          <p id="discription">当サイトは以下のアプリケーションから<span>インスピレーションを得て作成いたしました。</span><span>心より感謝申し上げます。</span></p>
+          <ul id="specialThanksLi">
+            <li id="stayfree">
+              <p>StayFree</p>
+              <p>create: <a href="https://stayfreeapps.com/">stayfree様</a></p>
+            </li>
+          </ul>
           <p id="markLanguage">マークアップ言語</p>
           <ul id="markLangLi">
             <li id="HTML">HTML
