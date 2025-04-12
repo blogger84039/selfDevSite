@@ -1,8 +1,8 @@
 {
-	"name":				"",
-	"short_name":		"",
-	"description":		"",
-	"start_url":		"/",
+	"name":				"自己啓発サイト",
+	"short_name":		"自己啓発サイト",
+	"description":		"名言を「見て、入力」することで自己啓発をすることができるサイト",
+	"start_url":		"/selfDevSite/",
 	"display":			"standalone",
 	"orientation":		"any",
 	"background_color":	"#fff",
